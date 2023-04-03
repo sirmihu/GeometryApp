@@ -1,2 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using GeometryApp.Exceptions;
+using GeometryApp.Models;
+using GeometryApp.Scenarios;
+class Program
+{
+    static void Main(string[] args)
+    {
+       
+    }
+}
