@@ -12,6 +12,6 @@ namespace GeometryApp.Models
         }
 
         public abstract string GetName();
-        public abstract string CalculateArea();
+        public abstract void CalculateArea();
     }
 }

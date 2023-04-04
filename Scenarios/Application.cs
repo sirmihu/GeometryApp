@@ -4,7 +4,7 @@ namespace GeometryApp.Scenarios
 {
     public class Application
     {
-        public void Seed()
+        public List<FigureValue> Seed()
         {
             var figures = new List<FigureValue>()
             {
@@ -17,6 +17,8 @@ namespace GeometryApp.Scenarios
                 new FigureValue { FigureType = FigureType.Circle, Name = "Kółeczko nr 2",
                     Value = 3, RoundPrecision = 2 }
             };
+
+            return figures;
 
         }
     }

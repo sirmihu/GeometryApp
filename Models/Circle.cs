@@ -1,10 +1,11 @@
-﻿using GeometryApp.Utiles;
+﻿using GeometryApp.Exceptions;
+using GeometryApp.Utiles;
+using System.Security.Cryptography.X509Certificates;
 
 namespace GeometryApp.Models
 {
     public class Circle : Figure, IUtiles
     {
-        private readonly MathConstans _mathConstans;
         public double Radius { get; set; }
         public int Precision { get; set; }
 
@@ -12,21 +13,29 @@ namespace GeometryApp.Models
         {
             Radius = radius;
             Precision = precision;
+            Name = name;
+            CalculateArea();
         }
 
         public override string GetName()
         {
-            return "Circle";
+            return nameof(Circle);
         }
-        public override string CalculateArea()
+        public override void CalculateArea()
         {
-            double area = _mathConstans.Pi * Radius * Radius;
-            return $"[{Name}] my area is equal to: {area}";
+            Area = Convert.ToDouble(MathConstans.Pi) * Math.Pow(Radius, 2);
+            Round(Area, Precision);
+            Console.WriteLine($"[{GetName()}] my area is equal to: {Area}.");
 
         }
-        public double Round(double value, int digits)
+        public void Round(double value, int digits)
         {
-            throw new NotImplementedException();
+            if (digits > 3)
+            {
+                throw new CircleInvalidRoundPrecisionException(Name, digits);
+            }
+            Area = Math.Round(value, digits);
+            Console.WriteLine($"Area rounded to decimal places: {digits}, in {Name}");
         }
     }
 }

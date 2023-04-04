@@ -1,36 +1,42 @@
-﻿using GeometryApp.Utiles;
+﻿using GeometryApp.Exceptions;
+using GeometryApp.Utiles;
 
 namespace GeometryApp.Models
 {
     public class Square : Figure, IUtiles
     {
-        private double sideLength;
-        private int precision;
+        public double SideLength { get; set; }
+        public int Precision { get; set; }
 
         public Square(string name) : base(name) { }
         public Square(double sideLength, int precision, string name) : this(name)
         {
-            this.sideLength = sideLength;
-            this.precision = precision;
+            SideLength = sideLength;
+            Precision = precision;
+            Name = name;
+            CalculateArea();
         }
 
         public override string GetName()
         {
-            return "Square";
+            return nameof(Square);
         }
 
-        public override string CalculateArea()
+        public override void CalculateArea()
         {
-            double area = sideLength * sideLength;
-            return $"[{Name}] my area is equal to: {area}";
+            Area = Math.Pow(SideLength, 2);
+            Round(Area, Precision);
+            Console.WriteLine($"[{GetName()}] my area is equal to: {Area}");
         }
 
-        public double Round(double value, int digits)
+        public void Round(double value, int digits)
         {
-            double roundedValue = Math.Round(value, digits);
-            Area = roundedValue;
-            Console.WriteLine($"Field rounded to decimal places: {digits}, in {Name}");
-            return roundedValue;
+            if (digits > 4)
+            {
+                throw new SquareInvalidRoundPrecisionException(Name, digits);
+            }
+            Area = Math.Round(value, digits);
+            Console.WriteLine($"Area rounded to decimal places: {digits}, in {Name}");
         }
     }
 }
