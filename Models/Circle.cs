@@ -4,7 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace GeometryApp.Models
 {
-    public class Circle : Figure, IUtiles
+    public class Circle : Figure, IUtils
     {
         public double Radius { get; set; }
         public int Precision { get; set; }

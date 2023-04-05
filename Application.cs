@@ -1,13 +1,22 @@
 ﻿using GeometryApp.Exceptions;
 using GeometryApp.Models;
-using GeometryApp.Scenarios;
 using System.Xml.Linq;
 
-class Program
+class Application
 {
     static void Main(string[] args)
     {
-        var figures = new Application().Seed();
+        var figures = new List<FigureValue>()
+            {
+                new FigureValue { FigureType = FigureType.Square, Name = "Kwadracik nr 1",
+                    Value = 5, RoundPrecision = 2 },
+                new FigureValue { FigureType = FigureType.Square, Name = "Kwadracik nr 2",
+                    Value = 5, RoundPrecision = 5 },
+                new FigureValue { FigureType = FigureType.Circle, Name = "Kółeczko nr 1",
+                    Value = 3.3, RoundPrecision = 7 },
+                new FigureValue { FigureType = FigureType.Circle, Name = "Kółeczko nr 2",
+                    Value = 3, RoundPrecision = 2 }
+            };
 
         foreach (var figure in figures)
         {
