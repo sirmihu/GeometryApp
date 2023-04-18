@@ -15,9 +15,11 @@ class Application
                 new FigureValue { FigureType = FigureType.Circle, Name = "Kółeczko nr 1",
                     Value = 3.3, RoundPrecision = 7 },
                 new FigureValue { FigureType = FigureType.Circle, Name = "Kółeczko nr 2",
-                    Value = 3, RoundPrecision = 2 }
+                    Value = 3, RoundPrecision = 2 },
+                new FigureValue { FigureType = FigureType.Rectangle, Name = "Prostokącik nr 1",
+                    ValueA = 5, ValueB = 8, RoundPrecision = 2}
             };
-
+        
         foreach (var figure in figures)
         {
             try
@@ -26,6 +28,8 @@ class Application
                     new Square(figure.Value, figure.RoundPrecision, figure.Name);
                 else if (figure.FigureType == FigureType.Circle)
                     new Circle(figure.Value, figure.RoundPrecision, figure.Name);
+                else if (figure.FigureType == FigureType.Rectangle)
+                    new Rectangle(figure.ValueA, figure.ValueB, figure.RoundPrecision, figure.Name);
             }
             catch (InvalidRoundPrecisionException ex)
             {

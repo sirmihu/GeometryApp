@@ -19,7 +19,7 @@ namespace GeometryApp.Tests
             Assert.Equal("Square", name);
         }
 
-        [Fact]
+        /*[Fact]
         public void CalculateArea_ShouldSetArea()
         {
             // Arrange
@@ -30,16 +30,16 @@ namespace GeometryApp.Tests
 
             // Assert
             Assert.Equal(4, square.Area);
-        }
+        }*/
 
         [Fact]
-        public void Round_WithValidPrecision_ShouldRoundArea()
+        public void CalculateArea_ShouldCalculateAndRoundAreaCorrectly()
         {
             // Arrange
             var square = new Square(2, 2, "My Square");
 
             // Act
-            square.Round(square.Area, 1);
+            square.Round(square.Area, 2);
 
             // Assert
             Assert.Equal(4, square.Area);
@@ -54,5 +54,6 @@ namespace GeometryApp.Tests
             // Act & Assert
             Assert.Throws<SquareInvalidRoundPrecisionException>(() => square.Round(square.Area, 5));
         }
+
     }
 }
