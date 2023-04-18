@@ -1,7 +1,7 @@
 ﻿
 namespace GeometryApp.Utiles
 {
-    public interface IUtiles
+    public interface IUtils
     {
         void Round(double value, int digits);
     }

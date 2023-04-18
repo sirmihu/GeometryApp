@@ -3,7 +3,7 @@ using GeometryApp.Utiles;
 
 namespace GeometryApp.Models
 {
-    public class Square : Figure, IUtiles
+    public class Square : Figure, IUtils
     {
         public double SideLength { get; set; }
         public int Precision { get; set; }

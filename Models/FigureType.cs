@@ -4,6 +4,7 @@ namespace GeometryApp.Models
     public enum FigureType
     {
         Square,
-        Circle
+        Circle,
+        Rectangle
     }
 }

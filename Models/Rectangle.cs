@@ -1,17 +1,19 @@
 ﻿using GeometryApp.Exceptions;
 using GeometryApp.Utiles;
-using System.Security.Cryptography.X509Certificates;
 
 namespace GeometryApp.Models
 {
-    public class Circle : Figure, IUtils
+    public class Rectangle : Figure, IUtils
     {
-        public double Radius { get; set; }
+        public double SideA { get; set; }
+        public double SideB { get; set; }
         public int Precision { get; set; }
 
-        public Circle(double radius, int precision, string name) : base(name)
+        public Rectangle(string name) : base(name) { }
+        public Rectangle(double sideA, double sideB, int precision, string name) : this(name)
         {
-            Radius = radius;
+            SideA = sideA;
+            SideB = sideB;
             Precision = precision;
             Name = name;
             CalculateArea();
@@ -19,20 +21,21 @@ namespace GeometryApp.Models
 
         public override string GetName()
         {
-            return nameof(Circle);
+            return nameof(Rectangle);
         }
+
         public override void CalculateArea()
         {
-            Area = Convert.ToDouble(MathConstans.Pi) * Math.Pow(Radius, 2);
+            Area = SideA * SideB;
             Round(Area, Precision);
-            Console.WriteLine($"[{GetName()}] my area is equal to: {Area}.");
-
+            Console.WriteLine($"[{GetName()}] my area is equal to: {Area}");
         }
+
         public void Round(double value, int digits)
         {
-            if (digits > 3)
+            if (digits > 4)
             {
-                throw new CircleInvalidRoundPrecisionException(Name, digits);
+                throw new RectangleInvalidRoundPrecisionException(Name, digits);
             }
             Area = Math.Round(value, digits);
             Console.WriteLine($"Area rounded to decimal places: {digits}, in {Name}");
